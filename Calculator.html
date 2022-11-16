@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mulish&family=Roboto&family=Space+Mono&display=swap');
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: 'Roboto', sans-serif;
+            background: #002B5B;
+        }
+        .container{
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 20px;
+            padding: 10px 20px;
+            background: #2B4865;
+        }
+        .num{
+            padding: 5px 20px;
+            margin: 5px 0;
+            height: 35px;
+            width: 70px;
+        }
+        .result, .equal{
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .result{
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <form name="form">
+
+            <input type="text" class="result" name="answer"> <br>
+            
+            <input type="button" class="num" value="1" onclick="form.answer.value += '1' ">
+            <input type="button" class="num" value="2" onclick="form.answer.value += '2' ">
+            <input type="button" class="num" value="3" onclick="form.answer.value += '3' "> <br>
+            
+            <input type="button" class="num" value="4" onclick="form.answer.value += '4' ">
+            <input type="button" class="num" value="5" onclick="form.answer.value += '5' ">
+            <input type="button" class="num" value="6" onclick="form.answer.value += '6' "> <br>
+            
+            <input type="button" class="num" value="7" onclick="form.answer.value += '7' ">
+            <input type="button" class="num" value="8" onclick="form.answer.value += '8' ">
+            <input type="button" class="num" value="9" onclick="form.answer.value += '9' "> <br>
+            
+            <input type="button" class="num" value="+" onclick="form.answer.value += '+' ">
+            <input type="button" class="num" value="-" onclick="form.answer.value += '-' ">
+            <input type="button" class="num" value="*" onclick="form.answer.value += '*' "> <br>
+            
+            <input type="button" class="num" value="/" onclick="form.answer.value += '/' ">
+            <input type="button" class="num" value="0" onclick="form.answer.value += '0' ">
+            <input type="button" class="num" value="=" onclick="form.answer.value = eval(form.answer.value) "> <br>
+
+            <input type="button" class="equal" value="Clear All" onclick="form.answer.value = ' ' " id="clear">
+
+        </form>
+    </div>
+
+</body>
+</html>
