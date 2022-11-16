@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mulish&family=Roboto&family=Space+Mono&display=swap');
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: 'Roboto', sans-serif;
+            background: #1C3879;
+        }
+        .container{
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        h1{
+            color: #fff;
+            margin: 20px 0;
+        }
+        h2{
+            margin: 10px 0;
+        }
+        textarea{
+            background: #06283D;
+            resize: none;
+            padding: 10px;
+            margin: 10px;
+            font-size: 1.1rem;
+            color: #fff;
+            border-radius: 10px;
+        }
+        .button{
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            border-radius: 10px;
+            border-style: none;
+        }
+        .button:hover{
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Welcome to Typing Speed Test</h1>
+        <h2 id="msg"></h2> <br>
+        <textarea id="text" cols="100" rows="10" placeholder="Remember, be nice!"></textarea> <br>
+        <button id="btn" class="button">Start</button>
+    </div>
+
+    <script>
+
+        const array = [
+            "When you have a dream, you have to grab it and never let go",
+            "Nothing is impossible, everything is possible if you have faith and believe",
+            "There is nothing impossible if you have hope and those who try",
+            "Keep your face always towards the sunshine and shadows will fall behind you",
+            "Keep smiling and always keep happy and keep helping needy persons and be kind."
+        ];
+        const msg = document.getElementById('msg');
+        const text = document.getElementById('text');
+        const btn = document.getElementById('btn');
+        let startTime, endTime;
+
+        playGame = () => {
+            let randomText = Math.floor(Math.random() * array.length);
+            msg.innerText = array[randomText];
+            let date = new Date();
+            startTime = date.getTime();
+            btn.innerText = "Done"; 
+        }
+
+        endPlay = () => {
+            let date = new Date();
+            endTime = date.getTime();
+            let totalTime = ((endTime-startTime)/1000);
+
+            let totalStr = text.value;
+            let wordCount = wordCounter(totalStr);
+
+            let speed = Math.round((wordCount / totalTime) * 60);
+
+            let finalMsg = "You typed total at " + speed + " words per min";
+            msg.innerText = finalMsg;
+        }
+
+        // next requirement
+        const compareWords = (str1, str2) => {
+            let words1 = str1.split(" ");
+            let words2 = str2.split(" ");
+            let cnt = 0;
+
+            words1.forEach(function (item, index){
+                if(item == words2[index]){
+                    cnt++;
+                }
+            });
+
+            let errorWords = (words.length - cnt);
+            return (cnt + " correct out of " + words1.length + " words and the total number of error are " + errorWords+ ".");
+        }
+
+        const wordCounter = (str) => {
+            let response = str.split(" ").length;
+            console.log(response);
+            return response;
+        }
+
+        btn.addEventListener('click', function(){
+            if(this.innerText == 'Start'){
+                text.ariaDisabled = false;
+                playGame();
+            }else if(this.innerText == "Done"){
+                text.ariaDisabled = true;
+                btn.innerText = "Start";
+                endPlay();
+            }
+        })
+
+    </script>
+
+</body>
+</html>
